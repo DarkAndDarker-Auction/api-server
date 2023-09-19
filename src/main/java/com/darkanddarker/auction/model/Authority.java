@@ -1,2 +1,5 @@
-package com.darkanddarker.auction.model;public class Authority {
+package com.darkanddarker.auction.model;
+
+public enum Authority {
+    ROLE_USER, ROLE_ADMIN
 }
