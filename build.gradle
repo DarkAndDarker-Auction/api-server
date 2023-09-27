@@ -36,8 +36,16 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'
 
+	// jwt
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+
 	// RDB mysql connector
 	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// Swagger API
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
 
 }
 
