@@ -1,8 +1,7 @@
 package com.darkanddarker.auction.repository;
 
-import com.darkanddarker.auction.model.Member;
+import com.darkanddarker.auction.model.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 

@@ -1,7 +1,7 @@
 package com.darkanddarker.auction.service;
 
 import com.darkanddarker.auction.common.exception.BadRequestException;
-import com.darkanddarker.auction.model.Member;
+import com.darkanddarker.auction.model.member.Member;
 import com.darkanddarker.auction.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

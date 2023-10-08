@@ -1,7 +1,6 @@
 package com.darkanddarker.auction.dto;
 
-import com.darkanddarker.auction.model.Member;
-import lombok.AllArgsConstructor;
+import com.darkanddarker.auction.model.member.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
