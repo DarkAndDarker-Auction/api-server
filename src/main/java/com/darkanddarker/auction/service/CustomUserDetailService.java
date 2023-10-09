@@ -1,6 +1,7 @@
 package com.darkanddarker.auction.service;
 
 import com.darkanddarker.auction.common.exception.BadRequestException;
+import com.darkanddarker.auction.common.exception.NotFoundException;
 import com.darkanddarker.auction.model.member.Member;
 import com.darkanddarker.auction.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,7 @@ public class CustomUserDetailService implements UserDetailsService {
         Optional<Member> member = memberRepository.findByEmail(username);
         if(member.isPresent()){
             return member.map(this::createUserDetails)
-                    .orElseThrow(() -> new BadRequestException(username + " -> 데이터베이스에서 찾을 수 없습니다."));
+                    .orElseThrow(() -> new NotFoundException(username + " -> 데이터베이스에서 찾을 수 없습니다."));
         }
         throw new BadRequestException("로그인 정보가 올바르지 않습니다.");
     }
