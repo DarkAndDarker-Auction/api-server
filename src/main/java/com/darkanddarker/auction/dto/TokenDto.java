@@ -1,4 +1,4 @@
-package com.darkanddarker.auction.common.jwt;
+package com.darkanddarker.auction.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

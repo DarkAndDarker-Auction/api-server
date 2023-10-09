@@ -2,6 +2,7 @@ package com.darkanddarker.auction.common.config;
 
 import com.darkanddarker.auction.common.jwt.JwtAccessDeniedHandler;
 import com.darkanddarker.auction.common.jwt.JwtAuthenticationEntryPoint;
+import com.darkanddarker.auction.common.jwt.TokenBlacklist;
 import com.darkanddarker.auction.common.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +29,7 @@ public class SecurityConfig {
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final TokenProvider tokenProvider;
+    private final TokenBlacklist tokenBlacklist;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -42,7 +44,7 @@ public class SecurityConfig {
                                 .antMatchers("/**").permitAll()
                                 .anyRequest().permitAll()
                 )
-                .apply(new JwtFilterConfig(tokenProvider));
+                .apply(new JwtFilterConfig(tokenProvider, tokenBlacklist));
 
         return http.build();
     }
