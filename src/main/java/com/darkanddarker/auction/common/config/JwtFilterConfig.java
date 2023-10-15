@@ -15,9 +15,9 @@ public class JwtFilterConfig extends SecurityConfigurerAdapter<DefaultSecurityFi
     private final TokenProvider tokenProvider;
     private final TokenBlacklist tokenBlacklist;
 
-    @Override
-    public void configure(HttpSecurity http) {
-        JwtFilter customFilter = new JwtFilter(tokenProvider, tokenBlacklist);
-        http.addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class);
-    }
+//    @Override
+//    public void configure(HttpSecurity http) {
+//        JwtFilter customFilter = new JwtFilter(tokenProvider, tokenBlacklist);
+//        http.addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class);
+//    }
 }

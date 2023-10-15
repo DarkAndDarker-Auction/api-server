@@ -2,20 +2,18 @@ package com.darkanddarker.auction.service;
 
 import com.darkanddarker.auction.common.jwt.TokenBlacklist;
 import com.darkanddarker.auction.common.jwt.TokenProvider;
-import com.darkanddarker.auction.dto.SigninRequestDto;
-import com.darkanddarker.auction.dto.SignoutRequestDto;
-import com.darkanddarker.auction.dto.SignupRequestDto;
-import com.darkanddarker.auction.dto.TokenDto;
+import com.darkanddarker.auction.dto.auth.SigninRequestDto;
+import com.darkanddarker.auction.dto.auth.SignoutRequestDto;
+import com.darkanddarker.auction.dto.auth.SignupRequestDto;
+import com.darkanddarker.auction.dto.auth.TokenDto;
 import com.darkanddarker.auction.repository.RefreshTokenRepository;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
 
 @SpringBootTest
 class AuthServiceTest {

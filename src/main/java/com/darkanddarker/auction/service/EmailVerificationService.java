@@ -2,8 +2,8 @@ package com.darkanddarker.auction.service;
 
 import com.darkanddarker.auction.common.exception.BadRequestException;
 import com.darkanddarker.auction.common.utils.email.EmailUtils;
-import com.darkanddarker.auction.dto.EmailVerificationRequestDto;
-import com.darkanddarker.auction.dto.SendVerificationCodeRequestDto;
+import com.darkanddarker.auction.dto.auth.EmailVerificationRequestDto;
+import com.darkanddarker.auction.dto.auth.SendVerificationCodeRequestDto;
 import com.darkanddarker.auction.model.email.EmailVerification;
 import com.darkanddarker.auction.model.email.EmailVerificationHistory;
 import com.darkanddarker.auction.model.VerificationEventType;

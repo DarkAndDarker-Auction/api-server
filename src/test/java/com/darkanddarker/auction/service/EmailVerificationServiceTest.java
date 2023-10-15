@@ -1,7 +1,7 @@
 package com.darkanddarker.auction.service;
 
 import com.darkanddarker.auction.common.exception.BadRequestException;
-import com.darkanddarker.auction.dto.SendVerificationCodeRequestDto;
+import com.darkanddarker.auction.dto.auth.SendVerificationCodeRequestDto;
 import com.darkanddarker.auction.model.member.Member;
 import com.darkanddarker.auction.repository.EmailVerificationRepository;
 import com.darkanddarker.auction.repository.MemberRepository;
@@ -13,8 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class EmailVerificationServiceTest {

@@ -1,14 +1,13 @@
 package com.darkanddarker.auction.service;
 
 import com.darkanddarker.auction.common.exception.BadRequestException;
-import com.darkanddarker.auction.dto.NicknameVerificationRequestDto;
-import com.darkanddarker.auction.dto.SignupRequestDto;
+import com.darkanddarker.auction.dto.auth.NicknameVerificationRequestDto;
+import com.darkanddarker.auction.dto.auth.SignupRequestDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 class MemberVerificationServiceTest {

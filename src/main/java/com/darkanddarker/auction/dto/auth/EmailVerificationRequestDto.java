@@ -1,4 +1,4 @@
-package com.darkanddarker.auction.dto;
+package com.darkanddarker.auction.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

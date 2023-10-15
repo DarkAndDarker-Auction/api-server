@@ -1,10 +1,11 @@
 package com.darkanddarker.auction.controller;
 
-import com.darkanddarker.auction.dto.NicknameVerificationRequestDto;
+import com.darkanddarker.auction.dto.auth.NicknameVerificationRequestDto;
 import com.darkanddarker.auction.service.MemberVerificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Tag(name = "회원 생성 및 관리 API")
 @RequestMapping("/member")
 @RequiredArgsConstructor
 public class MemberController {
