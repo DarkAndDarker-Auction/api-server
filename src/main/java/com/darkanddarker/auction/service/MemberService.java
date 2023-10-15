@@ -2,7 +2,7 @@ package com.darkanddarker.auction.service;
 
 import com.darkanddarker.auction.common.exception.BadRequestException;
 import com.darkanddarker.auction.dto.auth.SignupRequestDto;
-import com.darkanddarker.auction.repository.MemberRepository;
+import com.darkanddarker.auction.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

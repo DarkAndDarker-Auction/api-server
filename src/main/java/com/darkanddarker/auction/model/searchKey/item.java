@@ -1,4 +1,4 @@
-package com.darkanddarker.auction.model.item;
+package com.darkanddarker.auction.model.searchKey;
 
 import com.darkanddarker.auction.model.searchKey.*;
 

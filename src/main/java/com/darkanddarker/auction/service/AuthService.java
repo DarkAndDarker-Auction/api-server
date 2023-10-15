@@ -8,7 +8,7 @@ import com.darkanddarker.auction.dto.auth.TokenDto;
 import com.darkanddarker.auction.common.jwt.TokenProvider;
 import com.darkanddarker.auction.dto.auth.SigninRequestDto;
 import com.darkanddarker.auction.model.jwt.RefreshToken;
-import com.darkanddarker.auction.repository.RefreshTokenRepository;
+import com.darkanddarker.auction.repository.auth.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
