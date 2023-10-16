@@ -3,6 +3,8 @@ package com.darkanddarker.auction.service;
 import com.darkanddarker.auction.common.exception.BadRequestException;
 import com.darkanddarker.auction.dto.auth.NicknameVerificationRequestDto;
 import com.darkanddarker.auction.dto.auth.SignupRequestDto;
+import com.darkanddarker.auction.service.member.MemberService;
+import com.darkanddarker.auction.service.member.MemberVerificationService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

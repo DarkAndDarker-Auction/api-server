@@ -2,7 +2,7 @@ package com.darkanddarker.auction.controller;
 
 import com.darkanddarker.auction.dto.search.SearchRequestDto;
 import com.darkanddarker.auction.model.auction.AuctionItem;
-import com.darkanddarker.auction.service.SearchService;
+import com.darkanddarker.auction.service.search.SearchService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -23,7 +23,7 @@ public class SearchController {
 
     private final SearchService searchService;
 
-    @Operation(summary = "카테고리 검색값 API - 무기 타입", description = "옵션 이름 및 수치별 물품 검색." +
+    @Operation(summary = "아이템 검색 - 옵션", description = "옵션 이름 및 수치별 물품 검색." +
             "옵션 별 수치는 항상 같거나 큰(>=) 값 으로 검색." +
             "복수의 옵션 검색 가능.")
     @ApiResponses(value = {
@@ -33,7 +33,7 @@ public class SearchController {
     })
     @PostMapping("auction-item")
     public List<AuctionItem> getAuctionItemsBySearchKey(@RequestBody SearchRequestDto searchRequestDto) {
-        return searchService.findItemsBySearchKey(searchRequestDto.getSearchKeySpecs());
+        return searchService.findItemsBySearchKey(searchRequestDto.getSearchKey());
     }
 
 }

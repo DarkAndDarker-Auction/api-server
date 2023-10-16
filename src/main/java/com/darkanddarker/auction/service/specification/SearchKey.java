@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class SearchKeySpec {
+public class SearchKey {
     private String optionName;
     private Long optionValue;
 }

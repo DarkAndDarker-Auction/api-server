@@ -5,6 +5,7 @@ import com.darkanddarker.auction.dto.auth.SendVerificationCodeRequestDto;
 import com.darkanddarker.auction.model.member.Member;
 import com.darkanddarker.auction.repository.email.EmailVerificationRepository;
 import com.darkanddarker.auction.repository.member.MemberRepository;
+import com.darkanddarker.auction.service.auth.EmailVerificationService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

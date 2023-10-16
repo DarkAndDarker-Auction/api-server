@@ -1,9 +1,9 @@
 package com.darkanddarker.auction.controller;
 
 import com.darkanddarker.auction.dto.auth.*;
-import com.darkanddarker.auction.service.AuthService;
-import com.darkanddarker.auction.service.EmailVerificationService;
-import com.darkanddarker.auction.service.MemberService;
+import com.darkanddarker.auction.service.auth.AuthService;
+import com.darkanddarker.auction.service.auth.EmailVerificationService;
+import com.darkanddarker.auction.service.member.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

@@ -1,7 +1,7 @@
 package com.darkanddarker.auction.controller;
 
 import com.darkanddarker.auction.dto.auth.NicknameVerificationRequestDto;
-import com.darkanddarker.auction.service.MemberVerificationService;
+import com.darkanddarker.auction.service.member.MemberVerificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

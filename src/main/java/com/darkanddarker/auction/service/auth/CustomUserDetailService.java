@@ -1,4 +1,4 @@
-package com.darkanddarker.auction.service;
+package com.darkanddarker.auction.service.auth;
 
 import com.darkanddarker.auction.common.exception.BadRequestException;
 import com.darkanddarker.auction.common.exception.NotFoundException;
