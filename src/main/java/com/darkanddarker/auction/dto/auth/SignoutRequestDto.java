@@ -1,13 +1,13 @@
-package com.darkanddarker.auction.dto;
+package com.darkanddarker.auction.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+@AllArgsConstructor
 @Getter
 @Builder
-@AllArgsConstructor
 public class SignoutRequestDto {
-    String accessToken;
-    String refreshToken;
+    private String accessToken;
+    private String refreshToken;
 }

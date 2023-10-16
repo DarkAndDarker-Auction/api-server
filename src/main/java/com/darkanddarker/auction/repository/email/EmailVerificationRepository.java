@@ -1,7 +1,8 @@
-package com.darkanddarker.auction.repository;
+package com.darkanddarker.auction.repository.email;
 
 import com.darkanddarker.auction.model.email.EmailVerification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 

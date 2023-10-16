@@ -1,4 +1,4 @@
-package com.darkanddarker.auction.repository;
+package com.darkanddarker.auction.repository.auth;
 
 import com.darkanddarker.auction.model.jwt.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;

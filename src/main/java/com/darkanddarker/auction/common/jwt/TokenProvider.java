@@ -1,7 +1,7 @@
 package com.darkanddarker.auction.common.jwt;
 
 
-import com.darkanddarker.auction.dto.TokenDto;
+import com.darkanddarker.auction.dto.auth.TokenDto;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

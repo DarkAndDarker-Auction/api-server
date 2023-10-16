@@ -28,7 +28,6 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         String jwt = resolveToken(request);
-
         if (!StringUtils.hasText(jwt)) {
             throw new NotFoundException("토큰을 찾을 수 없습니다.");
         }

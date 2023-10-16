@@ -1,6 +1,6 @@
 package com.darkanddarker.auction.model.email;
 
-import com.darkanddarker.auction.dto.EmailVerificationRequestDto;
+import com.darkanddarker.auction.dto.auth.EmailVerificationRequestDto;
 import com.darkanddarker.auction.model.VerificationEventType;;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

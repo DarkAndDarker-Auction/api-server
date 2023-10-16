@@ -1,27 +1,25 @@
 package com.darkanddarker.auction.controller;
 
-import com.darkanddarker.auction.dto.*;
+import com.darkanddarker.auction.dto.auth.*;
 import com.darkanddarker.auction.service.AuthService;
 import com.darkanddarker.auction.service.EmailVerificationService;
 import com.darkanddarker.auction.service.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @RestController
+@Tag(name = "인증 API")
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {

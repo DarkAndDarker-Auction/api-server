@@ -1,8 +1,8 @@
 package com.darkanddarker.auction.service;
 
 import com.darkanddarker.auction.common.exception.BadRequestException;
-import com.darkanddarker.auction.dto.NicknameVerificationRequestDto;
-import com.darkanddarker.auction.repository.MemberRepository;
+import com.darkanddarker.auction.dto.auth.NicknameVerificationRequestDto;
+import com.darkanddarker.auction.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

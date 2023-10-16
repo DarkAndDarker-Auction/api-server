@@ -1,4 +1,4 @@
-package com.darkanddarker.auction.repository;
+package com.darkanddarker.auction.repository.member;
 
 import com.darkanddarker.auction.model.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
