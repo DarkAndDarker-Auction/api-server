@@ -1,5 +1,6 @@
 package com.darkanddarker.auction.service.specification;
 
+import com.darkanddarker.auction.common.exception.BadRequestException;
 import com.darkanddarker.auction.model.auction.AuctionItem;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -31,9 +32,10 @@ public class SearchKeySpecCollection {
     private Specification<AuctionItem> addSearchKeySpecAnd(SearchKeySpec searchKeySpec) {
         return (root, query, builder) -> {
             List<Predicate> predicates = new ArrayList<>();
-            if (searchKeySpec.getOptionName() != null && searchKeySpec.getOptionValue() != null) {
-                predicates.add(builder.equal(root.get(searchKeySpec.getOptionName()), searchKeySpec.getOptionValue()));
+            if (searchKeySpec.getOptionName() == null || searchKeySpec.getOptionValue() == null) {
+                throw new BadRequestException("잘못된 요청입니다. 값을 확인해주세요.");
             }
+            predicates.add(builder.equal(root.get(searchKeySpec.getOptionName()), searchKeySpec.getOptionValue()));
             return builder.and(predicates.toArray(new Predicate[0]));
         };
     }

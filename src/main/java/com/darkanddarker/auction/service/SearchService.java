@@ -1,6 +1,7 @@
 package com.darkanddarker.auction.service;
 
 import com.darkanddarker.auction.model.auction.AuctionItem;
+import com.darkanddarker.auction.repository.auction.AuctionItemRepository;
 import com.darkanddarker.auction.service.specification.AuctionItemSpecification;
 import com.darkanddarker.auction.service.specification.SearchKeySpecCollection;
 import lombok.RequiredArgsConstructor;
@@ -16,15 +17,11 @@ import java.util.List;
 public class SearchService {
 
     private final AuctionItemSpecification auctionItemSpecification;
+    private final AuctionItemRepository auctionItemRepository;
 
     public List<AuctionItem> findItemsBySearchKey(SearchKeySpecCollection searchKeys) {
-        Specification<AuctionItem> spec = Specification.where(
-                auctionItemSpecification.SearchKeyOptionGreaterThan()
-        ).and(
-                auctionItemSpecification.SearchKeyOptionGreaterThan(armorRatingValue)
-        );
-
-        return yourEntityRepository.findAll(spec);
+        Specification<AuctionItem> spec = searchKeys.buildDynamicQuery();
+        return auctionItemRepository.findAll(spec);
     }
 
 }
