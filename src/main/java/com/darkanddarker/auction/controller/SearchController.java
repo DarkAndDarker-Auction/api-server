@@ -1,9 +1,7 @@
 package com.darkanddarker.auction.controller;
 
 import com.darkanddarker.auction.dto.search.*;
-import com.darkanddarker.auction.model.searchKey.Rarity;
-import com.darkanddarker.auction.model.searchKey.SlotType;
-import com.darkanddarker.auction.service.SearchService;
+import com.darkanddarker.auction.service.SearchKeyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -20,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SearchController {
 
-    private final SearchService searchService;
+    private final SearchKeyService searchService;
 
     @Operation(summary = "카테고리 검색값 API", description = "모든 검색 카테고리별 값 (ex. 슬롯 타입, 등급) API 가져오기.")
     @ApiResponses(value = {

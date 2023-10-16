@@ -1,11 +1,9 @@
 package com.darkanddarker.auction.model.searchKey;
 
-import com.darkanddarker.auction.model.searchKey.*;
-
 import javax.persistence.*;
 
 @Entity
-public class item {
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
