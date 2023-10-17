@@ -1,7 +1,7 @@
 package com.darkanddarker.auction.controller;
 
 import com.darkanddarker.auction.dto.search.*;
-import com.darkanddarker.auction.service.SearchKeyService;
+import com.darkanddarker.auction.service.search.SearchKeyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

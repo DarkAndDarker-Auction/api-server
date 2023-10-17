@@ -37,3 +37,8 @@ INSERT INTO hand_type (id, name) VALUES
                                      (1, 'one-handed'),
                                      (2, 'two-handed');
 
+INSERT INTO item (id, name, armor_type_id, hand_type_id, slot_type_id, weapon_type_id) VALUES
+    (1, 'rapier', null, 1, 6, 9),
+    (2, 'arming sword', null, 1, 6, 9),
+    (3, 'falchion', null, 1, 6, 9);
+

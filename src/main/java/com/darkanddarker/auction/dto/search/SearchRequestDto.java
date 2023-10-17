@@ -1,15 +1,13 @@
 package com.darkanddarker.auction.dto.search;
 
-import com.darkanddarker.auction.service.specification.SearchKeySpec;
-import com.darkanddarker.auction.service.specification.SearchKeySpecCollection;
-import lombok.AllArgsConstructor;
+import com.darkanddarker.auction.service.specification.SearchKeyCollection;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Getter
 @NoArgsConstructor
 public class SearchRequestDto {
-    private SearchKeySpecCollection searchKeySpecs;
+    @JsonUnwrapped
+    private SearchKeyCollection searchKey;
 }

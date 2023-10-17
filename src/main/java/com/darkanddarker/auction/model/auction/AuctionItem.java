@@ -2,23 +2,29 @@ package com.darkanddarker.auction.model.auction;
 
 import com.darkanddarker.auction.model.searchKey.Item;
 import com.darkanddarker.auction.model.searchKey.Rarity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class AuctionItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @JoinColumn(nullable = false)
     private Item item;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(nullable = false)
     private Rarity rarity;
 
     // 아이템 다이내믹 옵션
@@ -69,4 +75,9 @@ public class AuctionItem {
     private Long magic_weapon_damage_static;
     private Long max_health_static;
 
+    // 아이템 가격
+    private Long priceGold;
+    private Long priceGoldIngot;
+    private Long priceGoldenKey;
+    private Long priceEventCurrency;
 }

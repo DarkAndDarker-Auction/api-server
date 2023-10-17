@@ -1,4 +1,4 @@
-package com.darkanddarker.auction.service;
+package com.darkanddarker.auction.service.search;
 
 import com.darkanddarker.auction.dto.search.*;
 import com.darkanddarker.auction.model.searchKey.*;

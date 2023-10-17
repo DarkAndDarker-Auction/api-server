@@ -7,6 +7,8 @@ import com.darkanddarker.auction.dto.auth.SignoutRequestDto;
 import com.darkanddarker.auction.dto.auth.SignupRequestDto;
 import com.darkanddarker.auction.dto.auth.TokenDto;
 import com.darkanddarker.auction.repository.auth.RefreshTokenRepository;
+import com.darkanddarker.auction.service.auth.AuthService;
+import com.darkanddarker.auction.service.member.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
