@@ -27,7 +27,7 @@ public class SearchKeyCollection {
             if (searchKey.getOptionName() == null || searchKey.getOptionValue() == null) {
                 throw new BadRequestException("잘못된 요청입니다. 값을 확인해주세요.");
             }
-            predicates.add(builder.equal(root.get(searchKey.getOptionName()), searchKey.getOptionValue()));
+            predicates.add(builder.greaterThanOrEqualTo(root.get(searchKey.getOptionName()), searchKey.getOptionValue()));
             return builder.and(predicates.toArray(new Predicate[0]));
         };
     }
