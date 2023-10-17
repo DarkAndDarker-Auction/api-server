@@ -33,7 +33,7 @@ public class SearchController {
     })
     @PostMapping("auction-item")
     public List<AuctionItem> getAuctionItemsBySearchKey(@RequestBody SearchRequestDto searchRequestDto) {
-        return searchService.findItemsBySearchKey(searchRequestDto.getSearchKey());
+        return searchService.findItemsBySearchKey(searchRequestDto);
     }
 
 }
