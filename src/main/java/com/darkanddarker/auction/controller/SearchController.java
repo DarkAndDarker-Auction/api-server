@@ -1,6 +1,7 @@
 package com.darkanddarker.auction.controller;
 
 import com.darkanddarker.auction.dto.search.SearchRequestDto;
+import com.darkanddarker.auction.dto.search.SearchResponseDto;
 import com.darkanddarker.auction.model.auction.AuctionItem;
 import com.darkanddarker.auction.service.search.SearchService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,7 +33,7 @@ public class SearchController {
             @ApiResponse(responseCode = "500", description = "데이터를 가져오는데 실패하였습니다.")
     })
     @PostMapping("auction-item")
-    public List<AuctionItem> getAuctionItemsBySearchKey(@RequestBody SearchRequestDto searchRequestDto) {
+    public SearchResponseDto getAuctionItemsBySearchKey(@RequestBody SearchRequestDto searchRequestDto) {
         return searchService.findItemsBySearchKey(searchRequestDto);
     }
 

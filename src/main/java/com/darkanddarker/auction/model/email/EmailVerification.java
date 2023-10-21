@@ -57,4 +57,9 @@ public class EmailVerification {
         }
         return VerificationEventType.SUCCESS;
     }
+
+    public EmailVerification updateExpiredDate() {
+        this.expiredDate = LocalDateTime.now().plusMinutes(3);
+        return this;
+    }
 }

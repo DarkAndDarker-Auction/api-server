@@ -30,7 +30,7 @@ public class SearchRequestDto {
                 .reduce(Specification.where(null), Specification::and);
 
         if (!this.nameSearchKey.isEmpty()) {
-            spec.and(addNameSearchKeySpecAnd());
+            spec = Specification.where(spec).and(addNameSearchKeySpecAnd());
         }
 
         return spec;

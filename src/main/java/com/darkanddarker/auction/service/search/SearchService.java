@@ -1,6 +1,7 @@
 package com.darkanddarker.auction.service.search;
 
 import com.darkanddarker.auction.dto.search.SearchRequestDto;
+import com.darkanddarker.auction.dto.search.SearchResponseDto;
 import com.darkanddarker.auction.model.auction.AuctionItem;
 import com.darkanddarker.auction.repository.auction.AuctionItemRepository;
 import com.darkanddarker.auction.service.specification.AuctionItemSpecification;
@@ -19,9 +20,9 @@ public class SearchService {
 
     private final AuctionItemRepository auctionItemRepository;
 
-    public List<AuctionItem> findItemsBySearchKey(SearchRequestDto searchRequestDto) {
+    public SearchResponseDto findItemsBySearchKey(SearchRequestDto searchRequestDto) {
         Specification<AuctionItem> spec = searchRequestDto.buildDynamicQuery();
-        return auctionItemRepository.findAll(spec);
+        return new SearchResponseDto(auctionItemRepository.findAll(spec));
     }
 
 }

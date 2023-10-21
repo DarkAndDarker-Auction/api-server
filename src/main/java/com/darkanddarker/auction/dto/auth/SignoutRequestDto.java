@@ -3,9 +3,11 @@ package com.darkanddarker.auction.dto.auth;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class SignoutRequestDto {
     private String accessToken;
