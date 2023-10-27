@@ -32,11 +32,11 @@ public class CustomUserDetailService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Member> member = memberRepository.findByEmail(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Optional<Member> member = memberRepository.findByEmail(email);
         if(member.isPresent()){
             return member.map(this::createUserDetails)
-                    .orElseThrow(() -> new NotFoundException(username + " -> 데이터베이스에서 찾을 수 없습니다."));
+                    .orElseThrow(() -> new NotFoundException(email + " -> 데이터베이스에서 찾을 수 없습니다."));
         }
         throw new BadRequestException("로그인 정보가 올바르지 않습니다.");
     }

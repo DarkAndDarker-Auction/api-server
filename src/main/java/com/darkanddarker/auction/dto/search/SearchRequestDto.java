@@ -9,6 +9,9 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.Join;
@@ -22,6 +25,8 @@ import java.util.List;
 public class SearchRequestDto {
 
     private final List<OptionSearchKey> optionSearchKeys = new ArrayList<>();
+    private int pageSize;
+    private int pageNumber;
     private String nameSearchKey;
 
     public Specification<AuctionItem> buildDynamicQuery() {

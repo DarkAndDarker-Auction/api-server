@@ -13,4 +13,5 @@ public class Rarity {
 
     @Column(nullable = false)
     String name;
+    String colorCode;
 }
