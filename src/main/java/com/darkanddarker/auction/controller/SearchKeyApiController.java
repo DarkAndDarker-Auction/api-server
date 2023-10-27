@@ -86,4 +86,26 @@ public class SearchKeyApiController {
         return ResponseEntity.ok(rarityResponseDto);
     }
 
+    @Operation(summary = "카테고리 검색값 API - 아이템 옵션", description = "아이템 옵션 API 가져오기.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "데이터를 가져오는데 성공하였습니다."),
+            @ApiResponse(responseCode = "500", description = "데이터를 가져오는데 실패하였습니다.")
+    })
+    @GetMapping("/item-options")
+    public ResponseEntity<ItemOptionResponseDto> getItemOptions() {
+        ItemOptionResponseDto itemOptionResponseDto = searchService.getItemOptions();
+        return ResponseEntity.ok(itemOptionResponseDto);
+    }
+
+    @Operation(summary = "카테고리 검색값 API - 아이템 목록", description = "아이템 목록 API 가져오기.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "데이터를 가져오는데 성공하였습니다."),
+            @ApiResponse(responseCode = "500", description = "데이터를 가져오는데 실패하였습니다.")
+    })
+    @GetMapping("/items")
+    public ResponseEntity<ItemResponseDto> getItems() {
+        ItemResponseDto itemResponseDto = searchService.getItems();
+        return ResponseEntity.ok(itemResponseDto);
+    }
+
 }

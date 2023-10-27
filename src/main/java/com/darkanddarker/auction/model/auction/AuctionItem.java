@@ -1,19 +1,24 @@
 package com.darkanddarker.auction.model.auction;
 
+import com.darkanddarker.auction.model.VerificationEventType;
 import com.darkanddarker.auction.model.searchKey.Item;
 import com.darkanddarker.auction.model.searchKey.Rarity;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import reactor.util.annotation.Nullable;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AuctionItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +31,20 @@ public class AuctionItem {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Rarity rarity;
+
+    private LocalDateTime expirationTime;
+
+    @Column(nullable = false)
+    private boolean allowOffer;
+
+    @Enumerated(EnumType.STRING)
+    private AuctionStatusType auctionStatusType;
+
+    @PrePersist
+    private void setDefault() {
+        this.expirationTime = LocalDateTime.now().plusHours(12);
+        this.auctionStatusType = AuctionStatusType.ACTIVE;
+    }
 
     // 아이템 다이내믹 옵션
     private Long action_speed;

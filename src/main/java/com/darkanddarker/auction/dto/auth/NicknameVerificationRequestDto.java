@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class NicknameVerificationRequestDto {
     private String nickname;

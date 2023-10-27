@@ -28,13 +28,11 @@ public class JwtFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         String jwt = resolveToken(request);
-        if (!StringUtils.hasText(jwt)) {
-            throw new NotFoundException("토큰을 찾을 수 없습니다.");
-        }
-        if (tokenBlacklist.isAccessTokenBlacklisted(jwt)) {
+
+        if (StringUtils.hasText(jwt) && tokenBlacklist.isAccessTokenBlacklisted(jwt)) {
             throw new PreAuthenticatedCredentialsNotFoundException("로그아웃되어 더 이상 유효하지 않은 토큰입니다.");
         }
-        if (tokenProvider.validateToken(jwt)) {
+        if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }

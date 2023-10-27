@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 
 @Service
 public class AuctionItemSpecification {
-    public Specification<AuctionItem> SearchKeyOptionGreaterThan(SearchKey searchKeySpec) {
+    public Specification<AuctionItem> SearchKeyOptionGreaterThan(OptionSearchKey searchKeySpec) {
         return (Root<AuctionItem> root, CriteriaQuery<?> query, CriteriaBuilder builder) ->
                 builder.greaterThanOrEqualTo(root.get(searchKeySpec.getOptionName()), searchKeySpec.getOptionValue());
     }

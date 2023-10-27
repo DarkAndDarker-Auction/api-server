@@ -19,6 +19,9 @@ public class SearchKeyService {
     private final WeaponTypeRepository weaponTypeRepository;
     private final SlotTypeRepository slotTypeRepository;
     private final RarityRepository rarityRepository;
+    private final ItemOptionRepository itemOptionRepository;
+    private final ItemRepository itemRepository;
+
 
     public AllSearchKeyResponseDto getAllSearchKeys() {
         return AllSearchKeyResponseDto.builder()
@@ -27,8 +30,11 @@ public class SearchKeyService {
                 .weaponTypes(weaponTypeRepository.findAll())
                 .slotTypes(slotTypeRepository.findAll())
                 .rarities(rarityRepository.findAll())
+                .itemOptions(itemOptionRepository.findAll())
+                .items(itemRepository.findAll())
                 .build();
     }
+
 
     public HandTypeResponseDto getHandTypes() {
         List<HandType> handTypes = handTypeRepository.findAll();
@@ -53,6 +59,16 @@ public class SearchKeyService {
     public RarityResponseDto getRarities() {
         List<Rarity> rarities = rarityRepository.findAll();
         return new RarityResponseDto(rarities);
+    }
+
+    public ItemOptionResponseDto getItemOptions() {
+        List<ItemOption> itemOptions = itemOptionRepository.findAll();
+        return new ItemOptionResponseDto(itemOptions);
+    }
+
+    public ItemResponseDto getItems() {
+        List<Item> items = itemRepository.findAll();
+        return new ItemResponseDto(items);
     }
 
 }

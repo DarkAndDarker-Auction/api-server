@@ -35,9 +35,9 @@ public class EmailVerificationService {
     }
 
     @Transactional
-    public void sendVerificationCode(SendVerificationCodeRequestDto recipient) throws MessagingException, IOException {
-        EmailVerification emailVerification = findOrCreateEmailVerification(recipient.getEmail());
-        emailUtils.sendVerificationCode(recipient.getEmail(), emailVerification.generateCode());
+    public void sendVerificationCode(SendVerificationCodeRequestDto sendVerificationCodeRequestDto) throws MessagingException, IOException {
+        EmailVerification emailVerification = findOrCreateEmailVerification(sendVerificationCodeRequestDto.getEmail());
+        emailUtils.sendVerificationCode(sendVerificationCodeRequestDto.getEmail(), emailVerification.generateCode());
         emailVerificationRepository.save(emailVerification);
     }
 
@@ -54,8 +54,8 @@ public class EmailVerificationService {
     private EmailVerification findOrCreateEmailVerification(String email) {
         Optional<EmailVerification> emailVerification = emailVerificationRepository.findByEmail(email);
         if (emailVerification.isEmpty()) {
-            emailVerification = Optional.of(new EmailVerification(email));
+            return new EmailVerification(email);
         }
-        return emailVerification.get();
+        return emailVerification.get().updateExpiredDate();
     }
 }
