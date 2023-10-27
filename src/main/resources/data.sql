@@ -24,14 +24,14 @@ VALUES (1, 'back'),
        (7, 'secondary weapon'),
        (8, 'utility');
 
-INSERT INTO rarity (id, name)
-VALUES (1, 'poor'),
-       (2, 'common'),
-       (3, 'uncommon'),
-       (4, 'rare'),
-       (5, 'epic'),
-       (6, 'legend'),
-       (7, 'unique');
+INSERT INTO rarity (id, name, color_code)
+VALUES (1, 'poor', '#C8BDAD'),
+       (2, 'common', '#FBF3E7'),
+       (3, 'uncommon', '#C1FF62'),
+       (4, 'rare', '#72BDEB'),
+       (5, 'epic', '#C76FFF'),
+       (6, 'legend', '#FFC650'),
+       (7, 'unique', '#FFFAA0');
 
 INSERT INTO hand_type (id, name)
 VALUES (1, 'one-handed'),
@@ -89,6 +89,6 @@ VALUES
     (1, 'rapier', null, 1, 6, 9), (2, 'arming sword', null, 1, 6, 9),
                                   (3, 'falchion', null, 1, 6, 9);
 
-INSERT INTO auction_item (item_id, rarity_id, action_speed, max_health, agility, price_event_currency, price_golden_key, price_gold, price_gold_ingot, expiration_time, auction_status_type, allow_offer)
-VALUES
-    (1, 2, 4, 2, 3, 0, 0, 300, 0, NOW() + INTERVAL 12 HOUR, 'ACTIVE', true);
+# INSERT INTO auction_item (item_id, rarity_id, action_speed, max_health, agility, price_event_currency, price_golden_key, price_gold, price_gold_ingot, expiration_time, auction_status_type, allow_offer)
+# VALUES
+#     (1, 2, 4, 2, 3, 0, 0, 300, 0, NOW() + INTERVAL 12 HOUR, 'ACTIVE', true);

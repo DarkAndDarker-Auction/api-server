@@ -1,8 +1,10 @@
 package com.darkanddarker.auction.model.auction;
 
 import com.darkanddarker.auction.model.VerificationEventType;
+import com.darkanddarker.auction.model.member.Member;
 import com.darkanddarker.auction.model.searchKey.Item;
 import com.darkanddarker.auction.model.searchKey.Rarity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +25,11 @@ public class AuctionItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    @JsonIgnore
+    private Member seller;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
@@ -99,4 +106,9 @@ public class AuctionItem {
     private Long priceGoldIngot;
     private Long priceGoldenKey;
     private Long priceEventCurrency;
+
+    public AuctionItem updateStatus(AuctionStatusType auctionStatusType) {
+        this.auctionStatusType = auctionStatusType;
+        return this;
+    }
 }

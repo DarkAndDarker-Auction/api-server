@@ -4,6 +4,7 @@ import com.darkanddarker.auction.common.exception.BadRequestException;
 import com.darkanddarker.auction.dto.auction.AuctionItemRegisterRequestDto;
 import com.darkanddarker.auction.dto.auction.ItemPriceSet;
 import com.darkanddarker.auction.model.auction.AuctionItem;
+import com.darkanddarker.auction.model.member.Member;
 import com.darkanddarker.auction.model.searchKey.Item;
 import com.darkanddarker.auction.model.searchKey.Rarity;
 import com.darkanddarker.auction.repository.searchKey.ItemRepository;
@@ -54,7 +55,7 @@ public class AuctionItemMapper {
         return entityManager.createQuery(query.select(root).where(predicates.toArray(new Predicate[0]))).getSingleResult();
     }
 
-    public AuctionItem registerRequestToAuctionItemMapper(AuctionItemRegisterRequestDto auctionItemRegisterRequestDto) {
+    public AuctionItem registerRequestToAuctionItemMapper(AuctionItemRegisterRequestDto auctionItemRegisterRequestDto, Member member) {
 
         Item item = itemRepository.findById(auctionItemRegisterRequestDto.getItemId()).orElseThrow(() -> new BadRequestException("잘못된 아이템 정보입니다."));
         Rarity rarity = rarityRepository.findById(auctionItemRegisterRequestDto.getRarityId()).orElseThrow(() -> new BadRequestException("잘못된 등급 정보입니다."));
@@ -62,6 +63,7 @@ public class AuctionItemMapper {
 
         AuctionItem auctionItem = AuctionItem.builder()
                 .item(item)
+                .seller(member)
                 .rarity(rarity)
                 .priceGold(itemPrice.getPriceGold())
                 .priceGoldenKey(itemPrice.getPriceGoldenKey())

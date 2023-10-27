@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -14,5 +15,7 @@ import java.util.List;
 //@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SearchResponseDto {
     private List<AuctionItem> auctionItems;
+    private Long total;
+    private int pageNumber;
 
 }
