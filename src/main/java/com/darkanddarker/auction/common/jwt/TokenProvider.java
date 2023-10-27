@@ -1,11 +1,16 @@
 package com.darkanddarker.auction.common.jwt;
 
 
+import com.darkanddarker.auction.common.exception.UnauthorizedException;
 import com.darkanddarker.auction.dto.auth.TokenDto;
+import com.darkanddarker.auction.model.member.Member;
+import com.darkanddarker.auction.repository.member.MemberRepository;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -98,6 +103,14 @@ public class TokenProvider {
             log.info("JWT 토큰이 잘못되었습니다.");
         }
         return false;
+    }
+
+    public String getEmailFromAccessToken(String accessToken) {
+        if (!validateToken(accessToken)){
+            throw new UnauthorizedException("잘못된 토큰 정보입니다.");
+        }
+        Claims claims = parseClaims(accessToken);
+        return claims.getSubject();
     }
 
     private Claims parseClaims(String accessToken) {

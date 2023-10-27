@@ -4,6 +4,7 @@ import com.darkanddarker.auction.common.jwt.JwtAccessDeniedHandler;
 import com.darkanddarker.auction.common.jwt.JwtAuthenticationEntryPoint;
 import com.darkanddarker.auction.common.jwt.TokenBlacklist;
 import com.darkanddarker.auction.common.jwt.TokenProvider;
+import com.darkanddarker.auction.model.member.Authority;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,9 +18,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -41,7 +39,7 @@ public class SecurityConfig {
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(
                         authorize -> authorize
-                                .antMatchers("/**").permitAll()
+                                .antMatchers("/auction/register").hasAuthority("ROLE_USER")
                                 .antMatchers("/swagger-ui.html/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll()
                                 .anyRequest().permitAll()
                 )
