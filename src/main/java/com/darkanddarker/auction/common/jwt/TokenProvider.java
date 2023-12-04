@@ -29,17 +29,21 @@ import java.util.stream.Collectors;
 @Slf4j
 @Component
 public class TokenProvider {
+    private final MemberRepository memberRepository;
 
     private static final String AUTHORITIES_KEY = "auth";
+    private static final String USER_IDENTIFIER_KEY = "memberId";
     private static final String BEARER_TYPE = "Bearer";
     private static final long ACCESS_TOKEN_EXPIRE_TIME = 1000 * 60 * 30;            // 30분
     private static final long REFRESH_TOKEN_EXPIRE_TIME = 1000 * 60 * 60 * 24 * 7;  // 7일
 
     private final Key key;
 
-    public TokenProvider(@Value("${jwt.secret}") String secretKey) {
+    public TokenProvider(@Value("${jwt.secret}") String secretKey,
+                         MemberRepository memberRepository) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         this.key = Keys.hmacShaKeyFor(keyBytes);
+        this.memberRepository = memberRepository;
     }
 
     public TokenDto generateTokenDto(Authentication authentication) {
@@ -49,9 +53,13 @@ public class TokenProvider {
 
         long now = (new Date()).getTime();
 
+        Member member = memberRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new UnauthorizedException("잘못된 사용자 정보입니다."));
+
         Date accessTokenExpiresIn = new Date(now + ACCESS_TOKEN_EXPIRE_TIME);
         String accessToken = Jwts.builder()
                 .setSubject(authentication.getName())
+                .claim(USER_IDENTIFIER_KEY, member.getId())
                 .claim(AUTHORITIES_KEY, authorities)
                 .setExpiration(accessTokenExpiresIn)
                 .signWith(key, SignatureAlgorithm.HS512)
@@ -76,7 +84,7 @@ public class TokenProvider {
         Claims claims = parseClaims(accessToken);
 
         if (claims.get(AUTHORITIES_KEY) == null) {
-            throw new RuntimeException("권한 정보가 없는 토큰입니다.");
+            throw new UnauthorizedException("권한 정보가 없는 토큰입니다.");
         }
 
         Collection<? extends GrantedAuthority> authorities =

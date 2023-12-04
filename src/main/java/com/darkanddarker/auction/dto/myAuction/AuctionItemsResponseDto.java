@@ -1,21 +1,18 @@
-package com.darkanddarker.auction.dto.search;
+package com.darkanddarker.auction.dto.myAuction;
 
 import com.darkanddarker.auction.model.auction.AuctionItem;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-//@JsonInclude(JsonInclude.Include.NON_NULL)
-public class SearchResponseDto {
+@Builder
+public class AuctionItemsResponseDto {
     private List<AuctionItem> auctionItems;
     private Long total;
-    private int pageNumber;
-
 }

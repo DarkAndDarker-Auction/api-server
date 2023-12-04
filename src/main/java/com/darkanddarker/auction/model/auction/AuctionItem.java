@@ -1,11 +1,13 @@
 package com.darkanddarker.auction.model.auction;
 
+import com.darkanddarker.auction.model.BaseEntity;
 import com.darkanddarker.auction.model.VerificationEventType;
 import com.darkanddarker.auction.model.member.Member;
 import com.darkanddarker.auction.model.searchKey.Item;
 import com.darkanddarker.auction.model.searchKey.Rarity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,6 +16,7 @@ import reactor.util.annotation.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,7 +24,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AuctionItem {
+public class AuctionItem extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,6 +34,11 @@ public class AuctionItem {
     @JsonIgnore
     private Member seller;
 
+    @JsonProperty("sellerId")
+    public Long getSellerId() {
+        return seller.getId();
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private Item item;
@@ -38,6 +46,9 @@ public class AuctionItem {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Rarity rarity;
+
+    @OneToMany(mappedBy = "auctionItem", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<Offer> offers;
 
     private LocalDateTime expirationTime;
 
@@ -47,9 +58,11 @@ public class AuctionItem {
     @Enumerated(EnumType.STRING)
     private AuctionStatusType auctionStatusType;
 
+    @Transient
+    private boolean isInWishList;
+
     @PrePersist
     private void setDefault() {
-        this.expirationTime = LocalDateTime.now().plusHours(12);
         this.auctionStatusType = AuctionStatusType.ACTIVE;
     }
 
@@ -110,5 +123,18 @@ public class AuctionItem {
     public AuctionItem updateStatus(AuctionStatusType auctionStatusType) {
         this.auctionStatusType = auctionStatusType;
         return this;
+    }
+
+    public AuctionItem confirmOffer(Offer offer) {
+        this.priceGold = offer.getPriceGold();
+        this.priceGoldenKey = offer.getPriceGoldenKey();
+        this.priceGoldIngot = offer.getPriceGoldIngot();
+        this.priceEventCurrency = offer.getPriceEventCurrency();
+        this.auctionStatusType = AuctionStatusType.TRADING;
+        return this;
+    }
+
+    public void setIsInWishList(boolean isInWishList) {
+        this.isInWishList = isInWishList;
     }
 }

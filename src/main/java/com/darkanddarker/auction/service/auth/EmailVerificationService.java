@@ -43,8 +43,8 @@ public class EmailVerificationService {
 
     @Transactional
     public void verify(EmailVerificationRequestDto verifyRequestDto) {
-        EmailVerification emailVerification = emailVerificationRepository.findByEmail(verifyRequestDto.getEmail()).orElseThrow(
-                () -> new BadRequestException("잘못된 입력입니다."));
+        EmailVerification emailVerification = emailVerificationRepository.findByEmail(verifyRequestDto.getEmail())
+                .orElseThrow(() -> new BadRequestException("잘못된 입력입니다."));
         VerificationEventType verificationEventType = emailVerification.verify(verifyRequestDto);
 
         emailVerificationHistoryRepository.save(new EmailVerificationHistory(verificationEventType, emailVerification));

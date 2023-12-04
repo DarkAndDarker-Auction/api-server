@@ -4,5 +4,5 @@ public enum AuctionStatusType {
     ACTIVE,
     HAS_OFFER,
     TRADING,
-    DONE
+    COMPLETED
 }

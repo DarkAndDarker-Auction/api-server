@@ -1,20 +1,23 @@
 package com.darkanddarker.auction.controller;
 
+import com.darkanddarker.auction.dto.myAuction.AuctionItemsResponseDto;
 import com.darkanddarker.auction.dto.search.SearchRequestDto;
-import com.darkanddarker.auction.dto.search.SearchResponseDto;
-import com.darkanddarker.auction.model.auction.AuctionItem;
 import com.darkanddarker.auction.service.search.SearchService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @Tag(name = "물품 검색 API")
@@ -33,8 +36,11 @@ public class SearchController {
             @ApiResponse(responseCode = "500", description = "데이터를 가져오는데 실패하였습니다.")
     })
     @PostMapping("auction-item")
-    public SearchResponseDto getAuctionItemsBySearchKey(@RequestBody SearchRequestDto searchRequestDto) {
-        return searchService.findItemsBySearchKey(searchRequestDto);
+    public ResponseEntity<AuctionItemsResponseDto> getAuctionItemsBySearchKey(
+            @RequestBody SearchRequestDto searchRequestDto,
+            @PageableDefault(direction = Sort.Direction.DESC) Pageable pageable,
+            HttpServletRequest request) {
+        String authorizationHeader = request.getHeader("Authorization");
+        return ResponseEntity.ok(searchService.findItemsBySearchKey(searchRequestDto, pageable, authorizationHeader));
     }
-
 }
