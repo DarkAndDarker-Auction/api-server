@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class AuctionItemOfferResponseDto {
-    List<Offer> offers;
+    private List<Offer> offers;
 
     public AuctionItemOfferResponseDto(List<Offer> offers) {
         this.offers = offers;

@@ -1,6 +1,7 @@
 package com.darkanddarker.auction.common.jwt;
 
 import com.darkanddarker.auction.common.exception.NotFoundException;
+import com.darkanddarker.auction.common.exception.UnauthorizedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,6 +9,7 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedC
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.security.sasl.AuthenticationException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +32,8 @@ public class JwtFilter extends OncePerRequestFilter {
         String jwt = resolveToken(request);
 
         if (StringUtils.hasText(jwt) && tokenBlacklist.isAccessTokenBlacklisted(jwt)) {
-            throw new PreAuthenticatedCredentialsNotFoundException("로그아웃되어 더 이상 유효하지 않은 토큰입니다.");
+            System.out.println(jwt);
+            throw new UnauthorizedException("로그아웃되어 더 이상 유효하지 않은 토큰입니다.");
         }
         if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
             Authentication authentication = tokenProvider.getAuthentication(jwt);

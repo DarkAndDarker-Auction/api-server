@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class AuctionItemBuyRequestDto {
-    Long auctionItemId;
+    private Long auctionItemId;
+    private ItemPriceSet itemPriceSet;
 }

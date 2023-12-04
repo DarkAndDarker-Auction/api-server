@@ -31,10 +31,9 @@ public class SearchKeyService {
                 .slotTypes(slotTypeRepository.findAll())
                 .rarities(rarityRepository.findAll())
                 .itemOptions(itemOptionRepository.findAll())
-                .items(itemRepository.findAll())
+                .items(itemRepository.findAllByOrderByName())
                 .build();
     }
-
 
     public HandTypeResponseDto getHandTypes() {
         List<HandType> handTypes = handTypeRepository.findAll();

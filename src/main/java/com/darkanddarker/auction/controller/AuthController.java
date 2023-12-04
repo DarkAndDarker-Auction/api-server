@@ -2,6 +2,7 @@ package com.darkanddarker.auction.controller;
 
 import com.darkanddarker.auction.dto.auth.*;
 import com.darkanddarker.auction.service.auth.AuthService;
+import com.darkanddarker.auction.service.auth.CustomUserDetailService;
 import com.darkanddarker.auction.service.auth.EmailVerificationService;
 import com.darkanddarker.auction.service.member.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,6 +11,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,6 +63,16 @@ public class AuthController {
         return ResponseEntity.ok("로그아웃에 성공하였습니다.");
     }
 
+    @Operation(summary = "토큰 재발급", description = "액세스 토큰만료 시 리프레시 토큰으로 재발급.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "재발급에 성공하였습니다."),
+            @ApiResponse(responseCode = "401", description = "이미 로그아웃 되었거나 인가되지 않은 사용자 입니다.")
+    })
+    @PostMapping("/reissue")
+    public ResponseEntity<TokenDto> reissue(@RequestBody TokenRefreshRequestDto tokenRefreshRequestDto) {
+        return ResponseEntity.ok(authService.reissue(tokenRefreshRequestDto));
+    }
+
     @Operation(summary = "이메일 인증번호 전송", description = "회원가입 단계 중 이메일 인증단계. 요청된 이메일 중복검사 진행 후 인증번호 발송.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "인증번호 발송에 성공하였습니다."),
@@ -76,7 +89,7 @@ public class AuthController {
     @Operation(summary = "이메일 인증번호 검증", description = "이메일 인증번호 일치 여부 확인.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "인증이 완료되었습니다."),
-            @ApiResponse(responseCode = "401", description = "올바르지 않은 인증번호 입니다.")
+            @ApiResponse(responseCode = "400", description = "올바르지 않은 인증번호 입니다.")
     })
     @PostMapping("/email-verification/verify")
     public ResponseEntity<Object> verifyEmailVerificationCode(@RequestBody EmailVerificationRequestDto emailVerificationRequestDto) {

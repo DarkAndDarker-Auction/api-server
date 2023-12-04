@@ -23,6 +23,10 @@ public class AuctionItemRegisterRequestDto {
 
     private ItemPriceSet itemPriceSet;
 
+    private int auctionPeriod;
+
+    private boolean allowOffer;
+
 }
 
 
