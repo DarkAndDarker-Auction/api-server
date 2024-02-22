@@ -90,7 +90,8 @@ https://www.youtube.com/watch?v=5vZ3yJUy4So
 
 ### 3) 물품 등록
 
-https://youtu.be/1zarSa-CUdQ
+
+<iframe width="1044" height="587" src="[https://www.youtube.com/embed/eUQFtpxet1k](https://youtu.be/1zarSa-CUdQ)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### 4) 거래 제안
 
