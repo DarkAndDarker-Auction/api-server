@@ -72,37 +72,10 @@
 
 ### 화면 구성
 
+```figma
 https://www.figma.com/file/CCmejjh2vW9bWEKTeznaeJ/Dark-And-Darker-Auction?type=design&node-id=0-1&mode=design&t=Fc8l9zY0SCZEfwox-0
-
+```
 ---
-
-### ERD
-
-![Travellery_ERD.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/90b6d907-f249-4d6f-8e3b-1f47c4f98b01/b484e98b-0e5e-40b2-8f49-4ded5bd9dee8/Travellery_ERD.png)
-
-[auction api](https://www.erdcloud.com/d/utv25ytEihieq2B9f)
-
----
-
-### API 명세서
-
-![DaDAuction_API_SWAGGER_page-0001.jpg](https://prod-files-secure.s3.us-west-2.amazonaws.com/90b6d907-f249-4d6f-8e3b-1f47c4f98b01/046d05ed-509f-417b-8f53-c736657260e5/DaDAuction_API_SWAGGER_page-0001.jpg)
-
-[DaDAuction_API_SWAGGER.pdf](https://prod-files-secure.s3.us-west-2.amazonaws.com/90b6d907-f249-4d6f-8e3b-1f47c4f98b01/9e9db758-692b-4c69-a6e0-5a52ef18d862/DaDAuction_API_SWAGGER.pdf)
-
----
-
-### 구현 내용
-
-[알림 기능](https://www.notion.so/1c08eb054c324bbf86836c8bca04a480?pvs=21)
-
----
-
-### Git
-
-[DarkAndDarker-Auction](https://github.com/orgs/DarkAndDarker-Auction/repositories)
-
-# 프로젝트 시연
 
 ### 1) 회원가입 및 로그인
 
