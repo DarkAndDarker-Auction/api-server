@@ -71,9 +71,10 @@
 ---
 
 ### 화면 구성
-
+<img src="https://www.figma.com/file/0BAjGRygmiFO6PetggEw4x?embed_host=share&kind=png&node-id=0%3A3" />
+<iframe width="1044" height="587" src="https://www.figma.com/file/CCmejjh2vW9bWEKTeznaeJ/Dark-And-Darker-Auction?type=design&node-id=0-1&mode=design&t=Fc8l9zY0SCZEfwox-0" frameborder="0" gyroscope; picture-in-picture"></iframe>
 ```figma
-https://www.figma.com/file/CCmejjh2vW9bWEKTeznaeJ/Dark-And-Darker-Auction?type=design&node-id=0-1&mode=design&t=Fc8l9zY0SCZEfwox-0
+
 ```
 ---
 
