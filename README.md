@@ -65,22 +65,11 @@
 ---
 
 ### 프로젝트 구조
-
-![Cretive Portfolio.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/90b6d907-f249-4d6f-8e3b-1f47c4f98b01/be5aabf0-a571-4487-9784-b2006979bb3d/Cretive_Portfolio.png)
-
----
-
-### 화면 구성
-<img src="https://www.figma.com/file/0BAjGRygmiFO6PetggEw4x?embed_host=share&kind=png&node-id=0%3A3" />
-<iframe width="1044" height="587" src="https://www.figma.com/file/CCmejjh2vW9bWEKTeznaeJ/Dark-And-Darker-Auction?type=design&node-id=0-1&mode=design&t=Fc8l9zY0SCZEfwox-0" frameborder="0" gyroscope; picture-in-picture"></iframe>
-```figma
-
-```
 ---
 
 ### 1) 회원가입 및 로그인
+![회원가입 및 로그인](https://github.com/DarkAndDarker-Auction/api-server/assets/88361948/fd388730-0c64-4bb3-82dd-7123bb854625)
 
-https://youtu.be/8likOHpfL1c
 
 ### 2) 물품 검색
 
@@ -89,9 +78,6 @@ https://www.youtube.com/watch?v=5vZ3yJUy4So
  
 
 ### 3) 물품 등록
-
-
-<iframe width="1044" height="587" src="[https://www.youtube.com/embed/eUQFtpxet1k](https://youtu.be/1zarSa-CUdQ)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### 4) 거래 제안
 
